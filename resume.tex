@@ -1,0 +1,242 @@
+\documentclass[a4paper]{article}
+    \usepackage{hyperref}
+    \usepackage{fullpage}
+    \usepackage{amsmath}
+    \usepackage{amssymb}
+    \usepackage{textcomp}
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \textheight=5in
+    \pagestyle{empty}
+    \raggedright
+    \usepackage[left=0.4in,right=0.4in,bottom=0.3in,top=0.5in]{geometry}
+\usepackage{etoolbox,refcount}
+\usepackage{multicol}
+
+
+\newcounter{countitems}
+\newcounter{nextitemizecount}
+\newcommand{\setupcountitems}{%
+  \stepcounter{nextitemizecount}%
+  \setcounter{countitems}{0}%
+  \preto\item{\stepcounter{countitems}}%
+}
+\makeatletter
+\newcommand{\computecountitems}{%
+  \edef\@currentlabel{\number\c@countitems}%
+  \label{countitems@\number\numexpr\value{nextitemizecount}-1\relax}%
+}
+\newcommand{\nextitemizecount}{%
+  \getrefnumber{countitems@\number\c@nextitemizecount}%
+}
+\newcommand{\previtemizecount}{%
+  \getrefnumber{countitems@\number\numexpr\value{nextitemizecount}-1\relax}%
+}
+\makeatother    
+\newenvironment{AutoMultiColItemize}{%
+\ifnumcomp{\nextitemizecount}{>}{3}{\begin{multicols}{2}}{}%
+\setupcountitems\begin{itemize}}%
+{\end{itemize}%
+\unskip\computecountitems\ifnumcomp{\previtemizecount}{>}{3}{\end{multicols}}{}}
+
+
+    %\renewcommand{\encodingdefault}{cg}
+%\renewcommand{\rmdefault}{lgrcmr}
+
+\def\bull{\vrule height 0.7ex width .7ex depth -.1ex }
+
+% DEFINITIONS FOR RESUME %%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=black,
+    pdftitle={Harsh's Resume},
+    pdfpagemode=FullScreen,
+    }
+
+\newcommand{\area} [2] {
+    \vspace*{-9pt}
+    \begin{verse}
+        \textbf{#1}   #2 
+    \end{verse}
+}
+
+\newcommand{\lineunder} {
+    \vspace*{-8pt} \\
+    \hspace*{-18pt} \hrulefill \\
+}
+
+\newcommand{\header} [1] {
+    {\hspace*{-18pt}\vspace*{6pt} \textsc{#1}}
+    \vspace*{-6pt} \lineunder
+}
+
+\newcommand{\employer} [3] {
+    { \textbf{#1} (#2)\\ \underline{\textbf{\emph{#3}}}\\  }
+}
+
+\newcommand{\contact} [3] {
+    \vspace*{-10pt}
+    \begin{center}
+        {\Huge \scshape {#1}}\\
+        #2 \\ #3
+    \end{center}
+    \vspace*{-8pt}
+}
+
+\newenvironment{achievements}{
+    \begin{list}
+        {$\bullet$}{\topsep 0pt \itemsep -2pt}}{\vspace*{4pt}
+    \end{list}
+}
+
+\newcommand{\schoolwithcourses} [4] {
+    \textbf{#1} #2 $\bullet$ #3\\
+    #4 \\
+    \vspace*{5pt}
+}
+
+\newcommand{\school} [4] {
+    \textbf{#1} #2 $\bullet$ #3\\
+    #4 \\
+}
+% END RESUME DEFINITIONS %%%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{document}
+\vspace*{-40pt}
+
+    
+
+%==== Profile ====%
+\vspace*{-9pt}
+\begin{center}
+	{\Huge \scshape {Harsh Pratap Singh}}\\
+	\vspace{2mm}
+	India $\cdot$ harsh.priv02@gmail.com $\cdot$ +91 7742992745 $\cdot$ \href{https://github.com/harshh2002}{GitHub} $\cdot$ \href{https://www.linkedin.com/in/harshh2002/}{Linkedin} \\
+\end{center}
+
+\begin{center}
+Dedicated, goal-oriented, and team-oriented individual who seeks an opportunity to work in the field of DevOps, Cloud Computing and Backend Development\\
+\end{center}
+\vspace{1mm}
+%==== Education ====%
+\header{Education}
+\vspace{0mm}
+\textbf{Indian Institute of Information Technology}\hfill Bhopal\\
+BTech Computer Science Engineering \hfill December 2021 - Present\\
+\vspace{1mm}
+\textbf{Relevant Coursework}
+\vspace{-2.5mm}
+ \begin{multicols}{2}
+    \begin{itemize}
+        \item Analysis of Algorithms
+         \vspace{-2.5mm}
+        \item Advanced Engineering Maths 
+         \vspace{-2.5mm}
+        \item Discrete Structures 
+         \vspace{-2.5mm}
+        \item Object Oriented Programming
+         \vspace{-2.5mm}
+        
+    \end{itemize}
+    \end{multicols}
+ 
+% \header{Position of Responsibility }
+% \vspace{0mm}
+
+% \textbf{GNU/Linux Users Club} \hfill IIIT Bhopal \\
+% \textit{Club Secretary} \hfill August 2022 - Present\\
+% \vspace{-2.5mm}
+% \begin{itemize} \itemsep 1pt
+% 	\item Using MacOS as my main distribution but I also have experience in most Debian based (Ubuntu), Fedora and Arch based Distributions
+% 		\item Guiding batch mates to install and use Linux distributions comfortably. Also in-charge of troubleshooting problems for them. 
+% \end{itemize}
+
+\vspace{-2mm}
+\header{Professional Experience}
+
+
+{\textbf{Graviti }}\hfill October 2022 - Present \\
+ {\textit{Backend Intern }}  \
+\vspace{-2.5mm}
+\begin{itemize} 
+\item Oversee back-end development using NestJS to maintain application integrity, security and efficiency.
+\vspace{-2mm}
+\item Utilize technologies such as TypeScript, PostgreSQL, TypeORM \& Docker to improve 
+codebase quality and increase stability.
+\vspace{-2mm}
+\item Improved databases and table structures following architecture methodology for database-driven web application.
+\vspace{-2mm}
+\item Migrated from Heroku to AWS, containerised the application using Docker and Docker Compose while creating necessary scripts wherever needed. 
+\vspace{-2mm}
+\item Setup monitoring over Nginx to capture API requests of over 80 controllers and an average of 50k active series reducing it to 10k without affecting the existing source code and create health checks as well as monitoring the node server in the process.
+\end{itemize}
+
+{\textbf{Muzzo }}\hfill October 2022 - December 2022 \\
+ {\textit{Software Development Intern - Backend}}  \
+\vspace{-2.5mm}
+\begin{itemize} 
+\item Maintain legacy code using NodeJS, MongoDB \& Docker to improve production stability. 
+\vspace{-2mm}
+\item Redeveloped existing software architecture to improve performance and scalability using Django, Docker \& AWS.
+\vspace{-2mm}
+\item Designed \& developed databases and table structures with PostgreSQL.
+\end{itemize}
+
+\header{Projects}
+
+{\textbf{Slack Bot}} \hfill September 2022 \\
+\vspace{-1mm}
+\url{https://harshh2002.github.io/slack-bot/} \\
+\vspace{-2mm}
+\begin{itemize} 
+	\item Create an interactive bot with low code templating tailored for every kind of user.
+    \item Started with small features, growing with the use cases every day and implementing a CI/CD pipeline to get the new features out using GitHub actions.
+    \item From serving files stored to getting files from users and sorting them and storing them efficiently to greeting and giving various functionality to the user.
+\end{itemize}
+{\textbf{Reddit-CLI}} \hfill July 2022 \\
+\vspace{-1mm}
+\url{https://github.com/harshh2002/reddit-cli} \\
+\vspace{-2mm}
+\begin{itemize} 
+	\item This project is basic implementation of how RESTFul API works. It parses the json data from reddit and posts the random memes using that parsed json file using node.js
+\end{itemize}
+{\textbf{DOT Files}} \hfill July 2022 \\
+\vspace{-1mm}
+\url{https://github.com/harshh2002/dot_files} \\
+\vspace{-2mm}
+\begin{itemize} 
+    \item Dotfiles helps in managing my MacOS configuration using git, github and github actions and other basic shell commands. Usage of other basic functionality like automation, cron jobs, version controls and CI/CD practices are implemented.
+\end{itemize}
+{\textbf{File Drawer}} \hfill July 2022 \\
+\vspace{-2mm}
+\url{https://github.com/harshh2002/file-drawer.git} \\
+\vspace{-2mm}
+\begin{itemize} 
+	\item This project is the basic application of back-end using Node.js and express along with usage of get and post requests. File Drawer currently creates a server to upload files from clients locally.
+\end{itemize}
+
+
+\header{Skills}
+\vspace{2mm}
+\begin{tabular}{ l l }
+	Programming Languages: & Python, C++ ,C, Java, GoLang, Rust  \\
+	\vspace{1mm}
+	Cloud Platforms:        & AWS , Google Cloud  \\
+	Devops Tools:  & Docker, Kubernetes, GitHub (with Github Actions), GitLab, Git \\
+	Database Management Systems: & MySQL , PostgreSQL \\ 
+	Web Development:       & HTML , CSS (Bootstrap and Tailwind) , JavaScript   \\
+	Libraries / Frameworks: & ReactJs , NodeJs , FastAPI, MongoDb, ExpressJs        \\
+	Tech Stacks:             & MERN Stack (MongoDb , ExpressJs, ReactJs, NodeJs) \\
+	Soft Skills:           &  Leadership, Communication Skills, Organised  \\
+	
+\end{tabular}
+
+
+\vspace{2mm}
+\header{Achievements}
+\textbf{Winner} \hfill GDSC IIIT Bhopal\\
+Won first prize in Web Development Week ReactJs quiz contest conducted by GDSC IIIT Bhopal.\\
+{\textit {Skills Used: ReactJs}}  \hfill 2022\\
+\end{document}
